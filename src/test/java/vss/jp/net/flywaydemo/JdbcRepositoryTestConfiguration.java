@@ -2,13 +2,13 @@ package vss.jp.net.flywaydemo;
 
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @RequiredArgsConstructor
-@Configuration
+@TestConfiguration
 public class JdbcRepositoryTestConfiguration {
 
   private final DataSource dataSource;
