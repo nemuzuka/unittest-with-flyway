@@ -22,7 +22,7 @@ abstract class AbstractJdbcTaskRepositoryTest {
   }
 
   @Test
-  @FlywayTest
+  @FlywayTest(invokeCleanDB = false)
   void testCreateTask() {
     // setup
     var task = Task.fromCreate("taskCode001", "OPEN");
@@ -36,7 +36,7 @@ abstract class AbstractJdbcTaskRepositoryTest {
   }
 
   @Test
-  @FlywayTest
+  @FlywayTest(invokeCleanDB = false)
   void testFindByTaskCode() {
     // setup
     var task = Task.fromCreate("taskCode001", "OPEN");
@@ -50,7 +50,7 @@ abstract class AbstractJdbcTaskRepositoryTest {
   }
 
   @Test
-  @FlywayTest
+  @FlywayTest(invokeCleanDB = false)
   void testFindByTaskCode_NotFound() {
     // exercise
     var actual = sut.findByTaskCode("notfound_001");

@@ -18,7 +18,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 /** JDBC を使用した Repository のテストクラスを意味する annotation */
 @TestExecutionListeners({
   DependencyInjectionTestExecutionListener.class,
-  FlywayTestExecutionListener.class
+  FlywayTestExecutionListener.class,
+  JdbcDataCleanTestExecutionListener.class
 })
 @TestPropertySource("/application-unittest.properties")
 @ExtendWith(SpringExtension.class)
