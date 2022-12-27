@@ -10,23 +10,17 @@ import org.seasar.doma.boot.autoconfigure.DomaAutoConfiguration;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
 
 /** JDBC を使用した Repository のテストクラスを意味する annotation */
 @TestExecutionListeners({
   DependencyInjectionTestExecutionListener.class,
-  TransactionalTestExecutionListener.class,
   FlywayTestExecutionListener.class
 })
 @TestPropertySource("/application-unittest.properties")
-@Transactional
-@Rollback
 @ExtendWith(SpringExtension.class)
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
