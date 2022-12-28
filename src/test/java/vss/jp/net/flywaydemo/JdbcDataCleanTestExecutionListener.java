@@ -51,10 +51,11 @@ public class JdbcDataCleanTestExecutionListener extends AbstractTestExecutionLis
     }
   }
 
-  private void deleteHostoryRecord(JdbcTemplate jdbcTemplate, String tableName)
+  protected void deleteHostoryRecord(JdbcTemplate jdbcTemplate, String tableName)
       throws SQLException {
     jdbcTemplate.execute(
-        "DELETE FROM `" + tableName + "` WHERE installed_rank > ?", getDeleteFromVersion());
+        "DELETE FROM `" + tableName + "` WHERE CAST(version AS SIGNED) > ?",
+        getDeleteFromVersion());
   }
 
   private void truncateTable(JdbcTemplate jdbcTemplate, String tableName) throws SQLException {
