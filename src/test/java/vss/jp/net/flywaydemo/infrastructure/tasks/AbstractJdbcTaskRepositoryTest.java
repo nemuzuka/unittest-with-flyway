@@ -58,4 +58,24 @@ abstract class AbstractJdbcTaskRepositoryTest {
     // verify
     assertThat(actual).isEmpty();
   }
+
+  @Test
+  @FlywayTest(invokeCleanDB = false, locationsForMigrate = "sqlfixtures/foo")
+  void testFindByTaskCode_WothLocation() {
+    // exercise
+    var actual = sut.findByTaskCode("taskCode_001");
+
+    // verify
+    assertThat(actual).isNotNull();
+  }
+
+  @Test
+  @FlywayTest(invokeCleanDB = false, locationsForMigrate = "sqlfixtures/bar")
+  void testFindByTaskCode_WothLocation2() {
+    // exercise
+    var actual = sut.findByTaskCode("taskCode_101");
+
+    // verify
+    assertThat(actual).isNotNull();
+  }
 }
